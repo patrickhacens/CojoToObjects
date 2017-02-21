@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeDojo", "CodeDojo\CodeDojo.csproj", "{E1139BF0-C714-45F3-BC83-0499E0BA95EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LQ", "LQ\LQ.csproj", "{8B0115E8-A14E-4F07-A6D5-9CB5D8FF2A0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1139BF0-C714-45F3-BC83-0499E0BA95EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1139BF0-C714-45F3-BC83-0499E0BA95EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1139BF0-C714-45F3-BC83-0499E0BA95EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1139BF0-C714-45F3-BC83-0499E0BA95EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B0115E8-A14E-4F07-A6D5-9CB5D8FF2A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0115E8-A14E-4F07-A6D5-9CB5D8FF2A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0115E8-A14E-4F07-A6D5-9CB5D8FF2A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0115E8-A14E-4F07-A6D5-9CB5D8FF2A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
