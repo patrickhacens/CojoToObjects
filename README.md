@@ -1,2 +1,2 @@
 # CojoToObjects
-Code dojo to reinplement LINQ to objects query
+Code dojo to reimplement LINQ to objects query
