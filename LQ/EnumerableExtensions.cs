@@ -274,6 +274,7 @@ namespace LQ
 			return true;
 		}
 
+		// Métodos auxiliares
 		#region Helpers
 		private static bool Contains<T>(IEnumerable<T> collection, T toCompare, IEqualityComparer<T> comparer)
 		{
@@ -292,7 +293,6 @@ namespace LQ
 			enumerator.Reset();
 			return count;
 		}
-
 		#endregion
 
 	}
