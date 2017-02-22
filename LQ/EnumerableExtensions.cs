@@ -134,7 +134,7 @@ namespace LQ
 				do
 				{
 					var key = expression(enumerator.Current);
-					if(group.ContainsKey(key))
+					if (group.ContainsKey(key))
 					{
 						group[key].Add(enumerator.Current);
 					}
@@ -163,7 +163,7 @@ namespace LQ
 			return collection.Distinct(EqualityComparer<T>.Default);
 		}
 
-		public static IEnumerable<T> Distinct<T>(this IEnumerable<T> collection, IEqualityComparer<T> comparer )
+		public static IEnumerable<T> Distinct<T>(this IEnumerable<T> collection, IEqualityComparer<T> comparer)
 		{
 			List<T> list = new List<T>();
 			var enumerator = collection.GetEnumerator();
@@ -274,7 +274,86 @@ namespace LQ
 			return true;
 		}
 
-		// Métodos auxiliares
+		public static IEnumerable<TResult> Join<T1, T2, T3, TResult>(this IEnumerable<T1> collection, IEnumerable<T2> joinCollection, Func<T1, T3> key, Func<T2, T3> foreignKey, Func<T1, T2, TResult> converter)
+		{
+			foreach (var item in collection)
+			{
+				foreach (var joinItem in joinCollection)
+				{
+					var comparer = EqualityComparer<T3>.Default.Equals(key(item), foreignKey(joinItem));
+					if (comparer)
+					{
+						yield return converter(item, joinItem);
+						break;
+					}
+				}
+			}
+		}
+
+		public static IEnumerable<T> AsEnumerable<T>(this IEnumerable<T> collection)
+		{
+			return collection;
+		}
+
+		public static T[] ToArray<T>(this IEnumerable<T> collection)
+		{
+			var enumerator = collection.GetEnumerator();
+			var count = enumerator.Count();
+			T[] result = new T[count];
+
+			for (int i = 0; i < count; i++)
+			{
+				enumerator.MoveNext();
+				result[i] = enumerator.Current;
+			}
+
+			return result;
+		}
+
+		public static List<T> ToList<T>(this IEnumerable<T> collection)
+		{
+			return (List<T>)collection;
+		}
+
+		public static Dictionary<TKey, TValue> ToDictionary<TKey, TValue>(this IEnumerable<TValue> collection, Func<TValue, TKey> expression)
+		{
+			Dictionary<TKey, TValue> result = new Dictionary<TKey, TValue>();
+
+			var enumerator = collection.GetEnumerator();
+			while (enumerator.MoveNext())
+			{
+				TKey key = expression(enumerator.Current);
+				if (result.ContainsKey(key)) throw new Exception("The element with key " + key.ToString() + " already exists");
+				result.Add(key, enumerator.Current);
+			}
+			return result;
+		}
+
+		public static IEnumerable<T> DefaultIfEmpty<T>(this IEnumerable<T> collection)
+		{
+			var enumerator = collection.GetEnumerator();
+			if (enumerator.MoveNext())
+			{
+				return collection;
+			}
+			return default(IEnumerable<T>);
+		}
+
+		public static IEnumerable<T> OfType<T>(this IEnumerable collection)
+		{
+			var enumerator = collection.GetEnumerator();
+			List<T> result = new List<T>();
+			while (enumerator.MoveNext())
+			{
+				if (enumerator.Current is T)
+				{
+					result.Add((T)enumerator.Current);
+				}
+			}
+			return result;
+		}
+
+		// Helpers
 		#region Helpers
 		private static bool Contains<T>(IEnumerable<T> collection, T toCompare, IEqualityComparer<T> comparer)
 		{

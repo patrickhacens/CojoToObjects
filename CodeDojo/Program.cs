@@ -14,6 +14,7 @@ namespace CodeDojo
 			Class1.Example();
 
 			var pessoas = Pessoa.ListaDePessoas();
+			var alunos = Aluno.ListaDePessoas();
 
 			//var testWhere = pessoas.Where(a => a.Nome == "Gustavo");
 
@@ -23,10 +24,8 @@ namespace CodeDojo
 			//var fodase = pessoas.TakeWhile(a => a.Nome == "Gustavo");
 			//var fodase = pessoas.Skip(5);
 
-
-			int[] x = new int[] { 1, 2, 3, 4, 5, 6, 7 };
-			int[] y = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 };
-			var fodase = x.SequenceEqual(y);
+			var lista = new List<object>() { new Pessoa() { Id = 1, Nome = "Gustavo" }, new Aluno() { Id = 432423, RM = "0" } };
+			var a = lista.OfType<Pessoa>();	
 		}
 
 
@@ -58,7 +57,21 @@ namespace CodeDojo
 				var pessoa1 = new Pessoa() { Id = 1, Nome = "Gustavo" };
 				var pessoa2 = new Pessoa() { Id = 1, Nome = "Patrick" };
 
-				return  new List<Pessoa>() {new Pessoa() { Id = 2, Nome = "Patrick" }, new Pessoa() { Id = 2, Nome = "Patrick" }, new Pessoa() { Id = 3, Nome = "Gustavo" }, pessoa2, pessoa1, pessoa1 };
+				return new List<Pessoa>() { new Pessoa() { Id = 2, Nome = "Patrick" }, new Pessoa() { Id = 2, Nome = "Patrick" }, new Pessoa() { Id = 3, Nome = "Gustavo" }, pessoa2, pessoa1, pessoa1 };
+			}
+		}
+
+		public class Aluno
+		{
+			public int Id { get; set; }
+			public string RM { get; set; } = "5";
+
+			public static IEnumerable<Aluno> ListaDePessoas()
+			{
+				var pessoa1 = new Aluno() { Id = 1, RM = "0" };
+				var pessoa2 = new Aluno() { Id = 432423, RM = "0" };
+
+				return new List<Aluno>() { new Aluno() { Id = 2 }, new Aluno() { Id = 4 }, new Aluno() { Id = 3 }, pessoa2, pessoa1 };
 			}
 		}
 	}

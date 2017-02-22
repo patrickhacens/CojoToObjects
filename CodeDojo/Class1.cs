@@ -11,7 +11,6 @@ namespace CodeDojo
 		public static void Example()
 		{
 			var pessoas = Program.Pessoa.ListaDePessoas();
-
 		}
 	}
 }
